@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEB-115 Final Project</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #D0F0C0;
+        }
+
+        header {
+            background-color: #9ecf99;
+            padding: 10px;
+            text-align: center;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        pre {
+            font-family: monospace;
+            white-space: pre-wrap; 
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Build Your Meal Plan</h1>
+        <p>Created by: Michael Stainback | Course: WEB-115 | Section: 0002</p>
+    </header>
+
+    <form id="mealPlanForm">
+        <!-- Personal Information Section -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+
+        <label for="goal">Goal for the Week: (ex. Weight Loss, Muscle Gain)</label>
+        <textarea id="goal" rows="3" required></textarea>
+
+        <!-- Meal Plan Section -->
+        <h2>Meal Plan for the Week</h2>
+
+        <!-- Meal Input Fields for each day of the week -->
+        <label for="monday">Monday:</label>
+        <input type="text" id="mondayBreakfast" placeholder="Breakfast">
+        <input type="text" id="mondaySnack1" placeholder="Morning Snack">
+        <input type="text" id="mondayLunch" placeholder="Lunch">
+        <input type="text" id="mondaySnack2" placeholder="Evening Snack">
+        <input type="text" id="mondayDinner" placeholder="Dinner">
+
+        <label for="tuesday">Tuesday:</label>
+        <input type="text" id="tuesdayBreakfast" placeholder="Breakfast">
+        <input type="text" id="tuesdaySnack1" placeholder="Morning Snack">
+        <input type="text" id="tuesdayLunch" placeholder="Lunch">
+        <input type="text" id="tuesdaySnack2" placeholder="Evening Snack">
+        <input type="text" id="tuesdayDinner" placeholder="Dinner">
+
+        <label for="tuesday">Wednesday:</label>
+        <input type="text" id="tuesdayBreakfast" placeholder="Breakfast">
+        <input type="text" id="tuesdaySnack1" placeholder="Morning Snack">
+        <input type="text" id="tuesdayLunch" placeholder="Lunch">
+        <input type="text" id="tuesdaySnack2" placeholder="Evening Snack">
+        <input type="text" id="tuesdayDinner" placeholder="Dinner">
+
+        <label for="tuesday">Thursday:</label>
+        <input type="text" id="tuesdayBreakfast" placeholder="Breakfast">
+        <input type="text" id="tuesdaySnack1" placeholder="Morning Snack">
+        <input type="text" id="tuesdayLunch" placeholder="Lunch">
+        <input type="text" id="tuesdaySnack2" placeholder="Evening Snack">
+        <input type="text" id="tuesdayDinner" placeholder="Dinner">
+
+        <label for="tuesday">Friday:</label>
+        <input type="text" id="tuesdayBreakfast" placeholder="Breakfast">
+        <input type="text" id="tuesdaySnack1" placeholder="Morning Snack">
+        <input type="text" id="tuesdayLunch" placeholder="Lunch">
+        <input type="text" id="tuesdaySnack2" placeholder="Evening Snack">
+        <input type="text" id="tuesdayDinner" placeholder="Dinner">
+
+        <label for="tuesday">Saturday:</label>
+        <input type="text" id="tuesdayBreakfast" placeholder="Breakfast">
+        <input type="text" id="tuesdaySnack1" placeholder="Morning Snack">
+        <input type="text" id="tuesdayLunch" placeholder="Lunch">
+        <input type="text" id="tuesdaySnack2" placeholder="Evening Snack">
+        <input type="text" id="tuesdayDinner" placeholder="Dinner">
+
+        <label for="tuesday">Sunday:</label>
+        <input type="text" id="tuesdayBreakfast" placeholder="Breakfast">
+        <input type="text" id="tuesdaySnack1" placeholder="Morning Snack">
+        <input type="text" id="tuesdayLunch" placeholder="Lunch">
+        <input type="text" id="tuesdaySnack2" placeholder="Evening Snack">
+        <input type="text" id="tuesdayDinner" placeholder="Dinner">
+
+        <button type="button" onclick="generateMealPlan()">Generate Meal Plan</button>
+        <button type="button" onclick="clearMealPlan()">Clear Meal Plan</button>
+        <button type="button" onclick="printMealPlan()">Print Meal Plan</button>
+        <button type="button" onclick="downloadMealPlan()">Download Meal Plan</button>
+    </form>
+
+    <script src="projectJS.js"></script>
+</body>
+</html>
