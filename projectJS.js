@@ -24,46 +24,33 @@ function generateMealPlan() {
         };
     });
 
-    // Create a new window for the meal plan
-    const mealPlanWindow = window.open('', '_blank');
-    mealPlanWindow.document.write(`
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Meal Plan for ${name}</title>
-            <link rel="stylesheet" href="styles.css"> <!-- You can link to the same CSS file as in finalProject.html -->
-        </head>
-        <body>
-            <h1>Meal Plan for ${name}</h1>
-            <p>Email: ${email}</p>
-            <p>Goal for the Week: ${goal}</p>
+    // HTML content for the meal plan
+    const mealPlanHTML = `
+        <h1>Meal Plan for ${name}</h1>
+        <p>Email: ${email}</p>
+        <p>Goal for the Week: ${goal}</p>
 
-            <h2>Meal Plan Details</h2>
-            <ul>
-                ${daysOfWeek.map(day => `
-                    <li>${day}:
-                        <ul>
-                            <li>Breakfast: ${mealPlanDetails[day].breakfast}</li>
-                            <li>Morning Snack: ${mealPlanDetails[day].snack1}</li>
-                            <li>Lunch: ${mealPlanDetails[day].lunch}</li>
-                            <li>Evening Snack: ${mealPlanDetails[day].snack2}</li>
-                            <li>Dinner: ${mealPlanDetails[day].dinner}</li>
-                        </ul>
-                    </li>
-                `).join('')}
-            </ul>
+        <h2>Meal Plan Details</h2>
+        <ul>
+            ${daysOfWeek.map(day => `
+                <li>${day}:
+                    <ul>
+                        <li>Breakfast: ${mealPlanDetails[day].breakfast}</li>
+                        <li>Morning Snack: ${mealPlanDetails[day].snack1}</li>
+                        <li>Lunch: ${mealPlanDetails[day].lunch}</li>
+                        <li>Evening Snack: ${mealPlanDetails[day].snack2}</li>
+                        <li>Dinner: ${mealPlanDetails[day].dinner}</li>
+                    </ul>
+                </li>
+            `).join('')}
+        </ul>
 
-            <button onclick="printMealPlan()">Print Meal Plan</button>
-            <button onclick="downloadMealPlan()">Download Meal Plan</button>
+        <button onclick="printMealPlan()">Print Meal Plan</button>
+        <button onclick="downloadMealPlan()">Download Meal Plan</button>
+    `;
 
-            <script src="projectJS.js"></script>
-        </body>
-        </html>
-    `);
-
-    mealPlanWindow.document.close();
+    // Replace the content of the current page with the meal plan HTML
+    document.body.innerHTML = mealPlanHTML;
 }
 
 function clearMealPlan() {
@@ -123,24 +110,12 @@ function downloadMealPlan() {
     // Convert the data object to JSON
     const mealPlanJSON = JSON.stringify(mealPlanData);
 
-    // Create a Blob from the JSON data
+    // Create a Blob containing the JSON data
     const blob = new Blob([mealPlanJSON], { type: 'application/json' });
 
-    // Create a download link and trigger a click to download the file
-    const downloadLink = document.createElement('a');
-    downloadLink.href = URL.createObjectURL(blob);
-    downloadLink.download = 'meal_plan.json';
-    downloadLink.click();
-}
-
-// Helper function to validate email address
-function isValidEmail(email) {
-    // Use a simple regex for email validation
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-}
-
-// Helper function to get the value from a meal input field
-function getMealInput(id) {
-    return document.getElementById(id).value;
+    // Create a download link and trigger a click to start the download
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.download = 'meal_plan.json';
+    link.click();
 }
